@@ -1,0 +1,54 @@
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 6\Server\Server\obj\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 7\Server\Server\obj\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\bin\Debug\Packets.dll
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\bin\Debug\Packets.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 8\Server\Server\obj\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\bin\Debug\Packets.dll
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\bin\Debug\Packets.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 9\Server\Server\obj\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\bin\Debug\Packets.dll
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\bin\Debug\Packets.pdb
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Server\obj\Debug\Server.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\bin\Debug\Server.exe
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\bin\Debug\Server.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\bin\Debug\Packets.dll
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\bin\Debug\Packets.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\obj\Debug\Server.exe
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Server\obj\Debug\Server.pdb
