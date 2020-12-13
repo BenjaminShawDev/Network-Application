@@ -9,7 +9,8 @@ namespace Packets
         PrivateMessage,
         ClientName,
         Login,
-        EncryptedMessage
+        EncryptedMessage,
+        Disconnect
     }
 
     [Serializable]

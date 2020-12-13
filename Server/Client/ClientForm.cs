@@ -80,7 +80,7 @@ namespace Client
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
             client.TCPSendMessage(new ChatMessagePacket("disconnected"));
-            client.SetName(new ClientNamePacket(""));
+            client.SetName(new ClientNamePacket(null));
             Close();
         }
     }

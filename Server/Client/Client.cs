@@ -43,20 +43,28 @@ namespace Client
 
         public bool Connect(string ipAddress, int port)
         {
-            tcpClient.Connect(ipAddress, port);
-            udpClient.Connect(ipAddress, port);
-            if (tcpClient.Connected)
+            try
             {
-                stream = tcpClient.GetStream();
-                writer = new BinaryWriter(stream);
-                reader = new BinaryReader(stream);
+                tcpClient.Connect(ipAddress, port);
+                udpClient.Connect(ipAddress, port);
+                if (tcpClient.Connected)
+                {
+                    stream = tcpClient.GetStream();
+                    writer = new BinaryWriter(stream);
+                    reader = new BinaryReader(stream);
 
-                formatter = new BinaryFormatter();
-                return true;
+                    formatter = new BinaryFormatter();
+                    return true;
+                }
+
+                else
+                    return false;
             }
-
-            else
+            
+            catch
+            {
                 return false;
+            }
         }
 
         public void Run()

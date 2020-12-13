@@ -25,3 +25,12 @@ C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Packe
 C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Packets\obj\Debug\netstandard2.0\Packets.csproj.CoreCompileInputs.cache
 C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Packets\obj\Debug\netstandard2.0\Packets.dll
 C:\Users\Ben\OneDrive - Staffordshire University\Year 2\CNA\Week 10\Server\Packets\obj\Debug\netstandard2.0\Packets.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\bin\Debug\netstandard2.0\Packets.deps.json
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\bin\Debug\netstandard2.0\Packets.dll
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\bin\Debug\netstandard2.0\Packets.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.csprojAssemblyReference.cache
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfoInputs.cache
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfo.cs
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.csproj.CoreCompileInputs.cache
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.dll
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Packets\obj\Debug\netstandard2.0\Packets.pdb

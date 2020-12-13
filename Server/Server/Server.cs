@@ -90,28 +90,31 @@ namespace Server
                             else
                             {
                                 ChatMessagePacket outPacket = new ChatMessagePacket(m_Clients[index].GetName() + ": " + chatPacket._message);
-                                for (int i = 0; i < m_Clients.Count; i++)
-                                    m_Clients[i].Send(outPacket);
+                                //for (int i = 0; i < m_Clients.Count; i++)
+                                foreach (Client i in m_Clients.Values)
+                                {
+                                    //if (m_Clients[i].GetName() != null)
+                                    i.Send(outPacket);
+                                }
                             }
                             break;
                         case PacketType.ClientName:
                             ClientNamePacket namePacket = packet as ClientNamePacket;
-                            m_Clients[index].SetName(namePacket._nickName);
-                            string listOfNames = m_Clients[0].GetName();
-                            for (int i = 1; i < m_Clients.Count; i++)
+                            m_Clients[index].SetName(index, namePacket._nickName);
+                            string listOfNames = "Client List:";
+                            foreach (Client i in m_Clients.Values)
                             {
-                                if (m_Clients[i].GetName() != "")
-                                    listOfNames = listOfNames + Environment.NewLine + m_Clients[i].GetName();
+                                if (i.GetName() != null)
+                                    listOfNames = listOfNames + Environment.NewLine + i.GetName();
                             }
                             ClientNamePacket listPacket = new ClientNamePacket(listOfNames);
-                            for (int i = 0; i < m_Clients.Count; i++)
-                                m_Clients[i].Send(listPacket);
+                            foreach (Client i in m_Clients.Values)
+                                i.Send(listPacket);
                             break;
                         case PacketType.Login:
                             LoginPacket loginPacket = (LoginPacket)packet;
                             endPoint = loginPacket._endPoint;
                             break;
-
                         default:
                             break;
                     }
@@ -271,7 +274,7 @@ namespace Server
             return clientName;
         }
 
-        public void SetName(string name)
+        public void SetName(int i, string name)
         {
             clientName = name;
             //Packet clientNamePacket = new ClientNamePacket(name);
