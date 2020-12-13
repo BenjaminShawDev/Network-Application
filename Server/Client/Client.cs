@@ -119,6 +119,10 @@ namespace Client
                                 ClientNamePacket namePacket = clientPacket as ClientNamePacket;
                                 clientForm.UpdateClientList(namePacket._nickName);
                                 break;
+                            case PacketType.PrivateMessage:
+                                PrivateMessagePacket privatePacket = clientPacket as PrivateMessagePacket;
+                                clientForm.UpdateChatWindow(privatePacket._message);
+                                break;
                         }
                     }
                 }

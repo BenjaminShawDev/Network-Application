@@ -87,13 +87,40 @@ namespace Server
                             ChatMessagePacket chatPacket = packet as ChatMessagePacket;
                             if (m_Clients[index].GetName() == null)
                                 Console.WriteLine("No name inputted");
+                            else if (chatPacket._message.Contains("/w"))
+                            {
+                                bool findName = false;
+                                string senderName = m_Clients[index].GetName();
+                                string recipientName = string.Empty;
+                                PrivateMessagePacket outPacket = new PrivateMessagePacket(string.Empty);
+                                foreach (Client i in m_Clients.Values)
+                                {
+                                    if (chatPacket._message.Contains("/w " + i.GetName()))
+                                    {
+                                        findName = true;
+                                        recipientName = i.GetName();
+                                        chatPacket._message = chatPacket._message.Substring(recipientName.Length + 3, chatPacket._message.Length - (recipientName.Length + 3));
+                                        outPacket = new PrivateMessagePacket(senderName + " whispers:" + chatPacket._message);
+                                        i.Send(outPacket);
+                                    }
+                                }
+                                
+                                if (findName == true)
+                                {
+                                    outPacket = new PrivateMessagePacket("You whispered to " + recipientName + ":" + chatPacket._message);
+                                    m_Clients[index].Send(outPacket);
+                                }
+                                else
+                                {
+                                    outPacket = new PrivateMessagePacket("Incorrect syntax for a private message. It should be /w recipient message");
+                                    m_Clients[index].Send(outPacket);
+                                }
+                            }
                             else
                             {
                                 ChatMessagePacket outPacket = new ChatMessagePacket(m_Clients[index].GetName() + ": " + chatPacket._message);
-                                //for (int i = 0; i < m_Clients.Count; i++)
                                 foreach (Client i in m_Clients.Values)
                                 {
-                                    //if (m_Clients[i].GetName() != null)
                                     i.Send(outPacket);
                                 }
                             }
