@@ -83,5 +83,15 @@ namespace Client
             client.SetName(new ClientNamePacket(null));
             Close();
         }
+
+        private void GameButton_Click(object sender, EventArgs e)
+        {
+            client.TCPSendMessage(new ChatMessagePacket("/game start"));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            client.TCPSendMessage(new ChatMessagePacket("/help"));
+        }
     }
 }

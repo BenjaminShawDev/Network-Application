@@ -25,8 +25,6 @@ namespace Client
         BinaryFormatter formatter;
         ClientForm clientForm;
 
-        string clientName;
-
         RSACryptoServiceProvider m_RSAProvider;
         RSAParameters m_PublicKey;
         RSAParameters m_PrivateKey;
@@ -86,18 +84,6 @@ namespace Client
 
         private void TCPProcessServerResponse()
         {
-            //Packet message, clientName;
-            //clientName = ReadClientName();
-            //if (clientName == null)
-            //{
-            //    ClientNamePacket namePacket = (ClientNamePacket)clientName;
-            //    while ((message = TCPReadMessage()) != null)
-            //    {
-            //        ChatMessagePacket chatPacket = (ChatMessagePacket)message;
-            //        clientForm.UpdateChatWindow(namePacket._nickName + ": " + chatPacket._message); //Update this to have a name instead of server
-            //    }
-            //}
-
             try
             {
                 while (reader != null)
@@ -118,10 +104,6 @@ namespace Client
                             case PacketType.ClientName:
                                 ClientNamePacket namePacket = clientPacket as ClientNamePacket;
                                 clientForm.UpdateClientList(namePacket._nickName);
-                                break;
-                            case PacketType.PrivateMessage:
-                                PrivateMessagePacket privatePacket = clientPacket as PrivateMessagePacket;
-                                clientForm.UpdateChatWindow(privatePacket._message);
                                 break;
                         }
                     }
@@ -192,11 +174,6 @@ namespace Client
             writer.Write(buffer);
             writer.Flush();
         }
-
-        //public string GetName()
-        //{
-        //    return clientName;
-        //}
 
         private byte[] Encrypt(byte[] data)
         {

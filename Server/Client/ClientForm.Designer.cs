@@ -35,6 +35,8 @@
             this.NameButton = new System.Windows.Forms.Button();
             this.DisconnectButton = new System.Windows.Forms.Button();
             this.ClientList = new System.Windows.Forms.TextBox();
+            this.GameButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SubmitButton
@@ -44,19 +46,19 @@
             this.SubmitButton.Location = new System.Drawing.Point(666, 392);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(93, 23);
-            this.SubmitButton.TabIndex = 5;
-            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.TabIndex = 6;
+            this.SubmitButton.Text = "Send Message";
             this.SubmitButton.UseVisualStyleBackColor = true;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // MessageWindow
             // 
-            this.MessageWindow.Location = new System.Drawing.Point(13, 31);
+            this.MessageWindow.Location = new System.Drawing.Point(12, 31);
             this.MessageWindow.Multiline = true;
             this.MessageWindow.Name = "MessageWindow";
             this.MessageWindow.ReadOnly = true;
             this.MessageWindow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.MessageWindow.Size = new System.Drawing.Size(548, 355);
+            this.MessageWindow.Size = new System.Drawing.Size(549, 355);
             this.MessageWindow.TabIndex = 2;
             this.MessageWindow.TabStop = false;
             // 
@@ -66,18 +68,18 @@
             this.InputField.Location = new System.Drawing.Point(12, 394);
             this.InputField.Name = "InputField";
             this.InputField.Size = new System.Drawing.Size(648, 20);
-            this.InputField.TabIndex = 4;
+            this.InputField.TabIndex = 5;
             // 
             // NameInput
             // 
             this.NameInput.Location = new System.Drawing.Point(12, 5);
             this.NameInput.Name = "NameInput";
-            this.NameInput.Size = new System.Drawing.Size(549, 20);
+            this.NameInput.Size = new System.Drawing.Size(351, 20);
             this.NameInput.TabIndex = 0;
             // 
             // NameButton
             // 
-            this.NameButton.Location = new System.Drawing.Point(567, 3);
+            this.NameButton.Location = new System.Drawing.Point(369, 3);
             this.NameButton.Name = "NameButton";
             this.NameButton.Size = new System.Drawing.Size(93, 23);
             this.NameButton.TabIndex = 1;
@@ -90,7 +92,7 @@
             this.DisconnectButton.Location = new System.Drawing.Point(666, 3);
             this.DisconnectButton.Name = "DisconnectButton";
             this.DisconnectButton.Size = new System.Drawing.Size(93, 23);
-            this.DisconnectButton.TabIndex = 2;
+            this.DisconnectButton.TabIndex = 4;
             this.DisconnectButton.Text = "Disconnect";
             this.DisconnectButton.UseVisualStyleBackColor = true;
             this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
@@ -108,12 +110,34 @@
             this.ClientList.TabStop = false;
             this.ClientList.WordWrap = false;
             // 
+            // GameButton
+            // 
+            this.GameButton.Location = new System.Drawing.Point(468, 3);
+            this.GameButton.Name = "GameButton";
+            this.GameButton.Size = new System.Drawing.Size(93, 23);
+            this.GameButton.TabIndex = 2;
+            this.GameButton.Text = "Game";
+            this.GameButton.UseVisualStyleBackColor = true;
+            this.GameButton.Click += new System.EventHandler(this.GameButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(567, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Help";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ClientForm
             // 
             this.AcceptButton = this.SubmitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 426);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.GameButton);
             this.Controls.Add(this.ClientList);
             this.Controls.Add(this.DisconnectButton);
             this.Controls.Add(this.NameButton);
@@ -139,5 +163,7 @@
         private System.Windows.Forms.Button NameButton;
         private System.Windows.Forms.Button DisconnectButton;
         private System.Windows.Forms.TextBox ClientList;
+        private System.Windows.Forms.Button GameButton;
+        private System.Windows.Forms.Button button1;
     }
 }
