@@ -116,7 +116,7 @@
             this.GameButton.Name = "GameButton";
             this.GameButton.Size = new System.Drawing.Size(93, 23);
             this.GameButton.TabIndex = 2;
-            this.GameButton.Text = "Game";
+            this.GameButton.Text = "Play Hangman";
             this.GameButton.UseVisualStyleBackColor = true;
             this.GameButton.Click += new System.EventHandler(this.GameButton_Click);
             // 
