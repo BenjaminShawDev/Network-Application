@@ -26,7 +26,7 @@ namespace Server
         RSAParameters m_PrivateKey;
         RSAParameters m_ServerKey;
 
-        //Game variables
+        //Hangman variables
         static bool gameStarted = false;
         static int m_Lives = 6;
         static List<char> m_IncorrectLetters;
@@ -254,7 +254,11 @@ namespace Server
                                 }
                             }
                             break;
-
+                        case PacketType.EncryptedMessage:
+                            EncryptMessagePacket encryptedPacket = packet as EncryptMessagePacket;
+                            foreach (Client i in m_Clients.Values)
+                                i.Send(encryptedPacket);
+                            break;
                         case PacketType.Login:
                             LoginPacket loginPacket = (LoginPacket)packet;
                             endPoint = loginPacket._endPoint;

@@ -105,6 +105,11 @@ namespace Client
                                 ClientNamePacket namePacket = clientPacket as ClientNamePacket;
                                 clientForm.UpdateClientList(namePacket._nickName);
                                 break;
+                            case PacketType.EncryptedMessage:
+                                EncryptMessagePacket encryptedPacket = clientPacket as EncryptMessagePacket;
+                                string decryptedMessage = DecryptString(encryptedPacket._encryptedMessage);
+                                clientForm.UpdateChatWindow(decryptedMessage);
+                                break;
                         }
                     }
                 }
@@ -179,8 +184,15 @@ namespace Client
         {
             lock(m_RSAProvider)
             {
-                m_RSAProvider.ImportParameters(m_ClientKey);
-                return m_RSAProvider.Encrypt(data, true);
+                try
+                {
+                    m_RSAProvider.ImportParameters(m_ClientKey);
+                    return m_RSAProvider.Encrypt(data, true);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
@@ -188,12 +200,19 @@ namespace Client
         {
             lock(m_RSAProvider)
             {
-                m_RSAProvider.ImportParameters(m_PrivateKey);
-                return m_RSAProvider.Decrypt(data, true);
+                try
+                {
+                    m_RSAProvider.ImportParameters(m_PrivateKey);
+                    return m_RSAProvider.Decrypt(data, true);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
-        private byte[] EncryptString(string message)
+        public byte[] EncryptString(string message)
         {
             byte[] bytes;
             bytes = UTF8Encoding.UTF8.GetBytes(message);

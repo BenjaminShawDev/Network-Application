@@ -34,18 +34,6 @@ namespace Packets
         }
     }
 
-    //[Serializable]
-    //public class PrivateMessagePacket : Packet
-    //{
-    //    public string _message;
-
-    //    public PrivateMessagePacket(string message)
-    //    {
-    //        _message = message;
-    //        packetType = PacketType.PrivateMessage;
-    //    }
-    //}
-
     [Serializable]
     public class ClientNamePacket : Packet
     {
@@ -73,11 +61,11 @@ namespace Packets
     [Serializable]
     public class EncryptMessagePacket : Packet
     {
-        public string _message;
+        public byte[] _encryptedMessage;
 
-        public EncryptMessagePacket(string message)
+        public EncryptMessagePacket(byte[] message)
         {
-            _message = message;
+            _encryptedMessage = message;
             packetType = PacketType.EncryptedMessage;
         }
     }

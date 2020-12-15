@@ -65,7 +65,13 @@ namespace Client
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            client.TCPSendMessage(new ChatMessagePacket(InputField.Text));
+            if (InputField.Text.Contains("/s"))
+            {
+                InputField.Text = InputField.Text.Substring(3, InputField.Text.Length - 3);
+                client.TCPSendMessage(new EncryptMessagePacket(client.EncryptString(InputField.Text)));
+            }
+            else
+                client.TCPSendMessage(new ChatMessagePacket(InputField.Text));
             InputField.Clear();
         }
 
@@ -89,7 +95,7 @@ namespace Client
             client.TCPSendMessage(new ChatMessagePacket("/game start"));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void HelpButton_Click(object sender, EventArgs e)
         {
             client.TCPSendMessage(new ChatMessagePacket("/help"));
         }
