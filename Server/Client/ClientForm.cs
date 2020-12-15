@@ -39,6 +39,25 @@ namespace Client
             }
         }
 
+        public void ClearChatWindow()
+        {
+            if (MessageWindow.InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    //ClearChatWindow();
+                    MessageWindow.Clear();
+                }));
+            }
+            //else
+            //{
+
+            //}
+            //MessageWindow.Clear();
+            //MessageWindow.SelectionStart = MessageWindow.Text.Length;
+            //MessageWindow.ScrollToCaret();
+        }
+
         public void UpdateClientList(string name)
         {
             if (ClientList.InvokeRequired)

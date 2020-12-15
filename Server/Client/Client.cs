@@ -10,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Packets;
 using System.Net;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace Client
 {
@@ -93,20 +94,24 @@ namespace Client
                     {
                         byte[] buffer = reader.ReadBytes(numOfBytes);
                         MemoryStream mStream = new MemoryStream(buffer);
-                        Packet clientPacket = formatter.Deserialize(mStream) as Packet;
+                        Packet tcpPacket = formatter.Deserialize(mStream) as Packet;
 
-                        switch (clientPacket.packetType)
+                        switch (tcpPacket.packetType)
                         {
                             case PacketType.ChatMessage:
-                                ChatMessagePacket chatPacket = clientPacket as ChatMessagePacket;
-                                clientForm.UpdateChatWindow(chatPacket._message);
+                                ChatMessagePacket chatPacket = tcpPacket as ChatMessagePacket;
+                                if (chatPacket._message.Contains("/clear"))
+                                    clientForm.ClearChatWindow();
+                                else
+                                    clientForm.UpdateChatWindow(chatPacket._message);
                                 break;
                             case PacketType.ClientName:
-                                ClientNamePacket namePacket = clientPacket as ClientNamePacket;
+                                ClientNamePacket namePacket = tcpPacket as ClientNamePacket;
                                 clientForm.UpdateClientList(namePacket._nickName);
+                                //Process.Start("OnlineGame/OnlineGame/Game1.cs");
                                 break;
                             case PacketType.EncryptedMessage:
-                                EncryptMessagePacket encryptedPacket = clientPacket as EncryptMessagePacket;
+                                EncryptMessagePacket encryptedPacket = tcpPacket as EncryptMessagePacket;
                                 string decryptedMessage = DecryptString(encryptedPacket._encryptedMessage);
                                 clientForm.UpdateChatWindow(decryptedMessage);
                                 break;

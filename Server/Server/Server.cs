@@ -109,6 +109,11 @@ namespace Server
                                 m_Clients[index].Send(outPacket);
                                 break;
                             }
+                            else if (chatPacket._message.Contains("/clear"))
+                            {
+                                ChatMessagePacket outPacket = new ChatMessagePacket("/clear");
+                                m_Clients[index].Send(outPacket);
+                            }
                             //Whisper command
                             else if (chatPacket._message.Contains("/w"))
                             {
@@ -152,17 +157,14 @@ namespace Server
                             {
                                 if (chatPacket._message.Contains("start") && !gameStarted)
                                 {
-                                    //ChatMessagePacket outPacket = new ChatMessagePacket("Game: A game of hangman was started by " + m_Clients[index].GetName() + ". To participate type /game guess [letter] to guess a letter");
                                     SendPacketToAll("Game: A game of hangman was started by " + m_Clients[index].GetName() + ". To participate type /game guess [letter] to guess a letter");
                                     gameStarted = true;
                                     GameStart();
-                                    //Packet hangmanPacket = ShowHangman();
                                     SendPacketToAll(ShowHangman());
                                 }
 
                                 else if (chatPacket._message.Contains("end") && gameStarted)
                                 {
-                                    //ChatMessagePacket outPacket = new ChatMessagePacket("The game has been ended by " + m_Clients[index].GetName() + ", the word was " + m_Word + ".");
                                     SendPacketToAll("The game has been ended by " + m_Clients[index].GetName() + ", the word was " + m_Word + ".");
                                     gameStarted = false;
                                 }
@@ -173,13 +175,11 @@ namespace Server
                                         chatPacket._message = chatPacket._message.Substring(12, 1);
                                     if (chatPacket._message.Contains("/g"))
                                         chatPacket._message = chatPacket._message.Substring(9, 1);
-                                    //ChatMessagePacket guessPacket = new ChatMessagePacket("Game: " + m_Clients[index].GetName() + " guessed " + chatPacket._message + ".");
                                     SendPacketToAll("Game: " + m_Clients[index].GetName() + " guessed " + chatPacket._message + ".");
                                     if (m_Word.Contains(chatPacket._message))
                                         m_CorrectLetters.Add(chatPacket._message[0]);
                                     else if (m_IncorrectLetters.Contains(chatPacket._message[0]))
                                     {
-                                        //ChatMessagePacket outPacket = new ChatMessagePacket(chatPacket._message + " has already been guessed.");
                                         SendPacketToAll(chatPacket._message + " has already been guessed.");
                                     }
                                     else if (!m_Word.Contains(chatPacket._message[0]))
@@ -188,20 +188,17 @@ namespace Server
                                         m_IncorrectLetters.Add(chatPacket._message[0]);
                                     }
 
-                                    //Packet hangmanPacket = ShowHangman();
                                     SendPacketToAll(ShowHangman());
                                 }
 
                                 if (m_Lives == 0 && gameStarted)
                                 {
-                                    //ChatMessagePacket outPacket = new ChatMessagePacket("GAME OVER!" + Environment.NewLine + "The word was " + m_Word + Environment.NewLine + "Type /game start if you want to play again.");
                                     gameStarted = false;
                                     SendPacketToAll("GAME OVER!" + Environment.NewLine + "The word was " + m_Word + Environment.NewLine + "Type /game start or press the hangman button if you want to play again.");
                                 }
 
                                 if (m_Word == m_WordAnswer && gameStarted)
                                 {
-                                    //ChatMessagePacket outPacket = new ChatMessagePacket("YOU WIN" + Environment.NewLine + "You guessed " + m_Word + " correctly" + Environment.NewLine + "Type /game start if you want to play again.");
                                     gameStarted = false;
                                     SendPacketToAll("YOU WIN" + Environment.NewLine + "You guessed " + m_Word + " correctly" + Environment.NewLine + "Type /game start or press the hangman button if you want to play again.");
                                 }
@@ -211,7 +208,6 @@ namespace Server
                             {
                                 if (chatPacket._message != string.Empty)
                                 {
-                                    //ChatMessagePacket outPacket = new ChatMessagePacket(m_Clients[index].GetName() + ": " + chatPacket._message);
                                     SendPacketToAll(m_Clients[index].GetName() + ": " + chatPacket._message);
                                 }
                             }
@@ -240,7 +236,6 @@ namespace Server
 
                                 else
                                 {
-                                    //m_Clients[index].SetName(namePacket._nickName);
                                     string listOfNames = "Client List:";
                                     foreach (Client i in m_Clients.Values)
                                     {
@@ -248,7 +243,6 @@ namespace Server
                                             listOfNames = listOfNames + Environment.NewLine + i.GetName();
                                     }
                                     ClientNamePacket listPacket = new ClientNamePacket(listOfNames);
-                                    //SendPacketToAll(listPacket);
                                     foreach (Client i in m_Clients.Values)
                                         i.Send(listPacket);
                                 }
