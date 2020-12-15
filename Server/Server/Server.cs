@@ -109,6 +109,7 @@ namespace Server
                                 m_Clients[index].Send(outPacket);
                                 break;
                             }
+                            //Clear command
                             else if (chatPacket._message.Contains("/clear"))
                             {
                                 ChatMessagePacket outPacket = new ChatMessagePacket("/clear");
@@ -202,6 +203,12 @@ namespace Server
                                     gameStarted = false;
                                     SendPacketToAll("YOU WIN" + Environment.NewLine + "You guessed " + m_Word + " correctly" + Environment.NewLine + "Type /game start or press the hangman button if you want to play again.");
                                 }
+                            }
+                            //Monogame start
+                            else if (chatPacket._message == "/monogame")
+                            {
+                                ChatMessagePacket outPacket = new ChatMessagePacket(chatPacket._message);
+                                m_Clients[index].Send(outPacket);
                             }
                             //Normal message
                             else

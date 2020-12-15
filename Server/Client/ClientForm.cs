@@ -45,17 +45,9 @@ namespace Client
             {
                 Invoke(new Action(() =>
                 {
-                    //ClearChatWindow();
                     MessageWindow.Clear();
                 }));
             }
-            //else
-            //{
-
-            //}
-            //MessageWindow.Clear();
-            //MessageWindow.SelectionStart = MessageWindow.Text.Length;
-            //MessageWindow.ScrollToCaret();
         }
 
         public void UpdateClientList(string name)
@@ -117,6 +109,11 @@ namespace Client
         private void HelpButton_Click(object sender, EventArgs e)
         {
             client.TCPSendMessage(new ChatMessagePacket("/help"));
+        }
+
+        private void MonoGameButton_Click(object sender, EventArgs e)
+        {
+            client.TCPSendMessage(new ChatMessagePacket("/monogame"));
         }
     }
 }

@@ -37,6 +37,7 @@
             this.ClientList = new System.Windows.Forms.TextBox();
             this.GameButton = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
+            this.MonoGameButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SubmitButton
@@ -74,12 +75,12 @@
             // 
             this.NameInput.Location = new System.Drawing.Point(12, 5);
             this.NameInput.Name = "NameInput";
-            this.NameInput.Size = new System.Drawing.Size(351, 20);
+            this.NameInput.Size = new System.Drawing.Size(252, 20);
             this.NameInput.TabIndex = 0;
             // 
             // NameButton
             // 
-            this.NameButton.Location = new System.Drawing.Point(369, 3);
+            this.NameButton.Location = new System.Drawing.Point(270, 3);
             this.NameButton.Name = "NameButton";
             this.NameButton.Size = new System.Drawing.Size(93, 23);
             this.NameButton.TabIndex = 1;
@@ -112,7 +113,7 @@
             // 
             // GameButton
             // 
-            this.GameButton.Location = new System.Drawing.Point(468, 3);
+            this.GameButton.Location = new System.Drawing.Point(369, 3);
             this.GameButton.Name = "GameButton";
             this.GameButton.Size = new System.Drawing.Size(93, 23);
             this.GameButton.TabIndex = 2;
@@ -130,12 +131,23 @@
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
+            // MonoGameButton
+            // 
+            this.MonoGameButton.Location = new System.Drawing.Point(468, 3);
+            this.MonoGameButton.Name = "MonoGameButton";
+            this.MonoGameButton.Size = new System.Drawing.Size(92, 23);
+            this.MonoGameButton.TabIndex = 9;
+            this.MonoGameButton.Text = "2D Game";
+            this.MonoGameButton.UseVisualStyleBackColor = true;
+            this.MonoGameButton.Click += new System.EventHandler(this.MonoGameButton_Click);
+            // 
             // ClientForm
             // 
             this.AcceptButton = this.SubmitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 426);
+            this.Controls.Add(this.MonoGameButton);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.GameButton);
             this.Controls.Add(this.ClientList);
@@ -165,5 +177,6 @@
         private System.Windows.Forms.TextBox ClientList;
         private System.Windows.Forms.Button GameButton;
         private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.Button MonoGameButton;
     }
 }

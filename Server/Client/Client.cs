@@ -102,13 +102,14 @@ namespace Client
                                 ChatMessagePacket chatPacket = tcpPacket as ChatMessagePacket;
                                 if (chatPacket._message.Contains("/clear"))
                                     clientForm.ClearChatWindow();
+                                else if (chatPacket._message == "/monogame")
+                                    Process.Start("C:/Users/Ben/Documents/GitHub/Network-Application/Server/OnlineGame/OnlineGame/bin/Debug/netcoreapp3.1/OnlineGame.exe");
                                 else
                                     clientForm.UpdateChatWindow(chatPacket._message);
                                 break;
                             case PacketType.ClientName:
                                 ClientNamePacket namePacket = tcpPacket as ClientNamePacket;
                                 clientForm.UpdateClientList(namePacket._nickName);
-                                //Process.Start("OnlineGame/OnlineGame/Game1.cs");
                                 break;
                             case PacketType.EncryptedMessage:
                                 EncryptMessagePacket encryptedPacket = tcpPacket as EncryptMessagePacket;
