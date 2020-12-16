@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Collections.Generic;
 
 namespace Packets
 {
@@ -8,6 +9,7 @@ namespace Packets
         ChatMessage,
         PrivateMessage,
         ClientName,
+        ClientList,
         Login,
         EncryptedMessage,
         Disconnect
@@ -26,10 +28,12 @@ namespace Packets
     public class ChatMessagePacket : Packet
     {
         public string _message;
+        public int _clientListNum;
 
-        public ChatMessagePacket(string message)
+        public ChatMessagePacket(string message, int clientListNum)
         {
             _message = message;
+            _clientListNum = clientListNum;
             packetType = PacketType.ChatMessage;
         }
     }
@@ -43,6 +47,19 @@ namespace Packets
         {
             _nickName = nickname;
             packetType = PacketType.ClientName;
+        }
+    }
+
+    [Serializable]
+    public class ClientListPacket : Packet
+    {
+        //public string _nickName;
+        public List<string> _nickName = new List<string>();
+
+        public ClientListPacket(List<string> nickname)
+        {
+            _nickName = nickname;
+            packetType = PacketType.ClientList;
         }
     }
 

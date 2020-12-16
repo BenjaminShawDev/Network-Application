@@ -34,32 +34,35 @@
             this.NameInput = new System.Windows.Forms.TextBox();
             this.NameButton = new System.Windows.Forms.Button();
             this.DisconnectButton = new System.Windows.Forms.Button();
-            this.ClientList = new System.Windows.Forms.TextBox();
             this.GameButton = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
             this.MonoGameButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.ListOfClients = new System.Windows.Forms.ListBox();
+            this.DeselectNamesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SubmitButton
             // 
             this.SubmitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SubmitButton.AutoSize = true;
-            this.SubmitButton.Location = new System.Drawing.Point(666, 392);
+            this.SubmitButton.Location = new System.Drawing.Point(567, 392);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(93, 23);
-            this.SubmitButton.TabIndex = 6;
+            this.SubmitButton.TabIndex = 9;
             this.SubmitButton.Text = "Send Message";
             this.SubmitButton.UseVisualStyleBackColor = true;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // MessageWindow
             // 
+            this.MessageWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MessageWindow.Location = new System.Drawing.Point(12, 31);
             this.MessageWindow.Multiline = true;
             this.MessageWindow.Name = "MessageWindow";
             this.MessageWindow.ReadOnly = true;
             this.MessageWindow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.MessageWindow.Size = new System.Drawing.Size(549, 355);
+            this.MessageWindow.Size = new System.Drawing.Size(548, 355);
             this.MessageWindow.TabIndex = 2;
             this.MessageWindow.TabStop = false;
             // 
@@ -68,8 +71,8 @@
             this.InputField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.InputField.Location = new System.Drawing.Point(12, 394);
             this.InputField.Name = "InputField";
-            this.InputField.Size = new System.Drawing.Size(648, 20);
-            this.InputField.TabIndex = 5;
+            this.InputField.Size = new System.Drawing.Size(548, 20);
+            this.InputField.TabIndex = 6;
             // 
             // NameInput
             // 
@@ -93,23 +96,10 @@
             this.DisconnectButton.Location = new System.Drawing.Point(666, 3);
             this.DisconnectButton.Name = "DisconnectButton";
             this.DisconnectButton.Size = new System.Drawing.Size(93, 23);
-            this.DisconnectButton.TabIndex = 4;
+            this.DisconnectButton.TabIndex = 5;
             this.DisconnectButton.Text = "Disconnect";
             this.DisconnectButton.UseVisualStyleBackColor = true;
             this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
-            // 
-            // ClientList
-            // 
-            this.ClientList.Location = new System.Drawing.Point(567, 31);
-            this.ClientList.Multiline = true;
-            this.ClientList.Name = "ClientList";
-            this.ClientList.ReadOnly = true;
-            this.ClientList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ClientList.ShortcutsEnabled = false;
-            this.ClientList.Size = new System.Drawing.Size(192, 355);
-            this.ClientList.TabIndex = 7;
-            this.ClientList.TabStop = false;
-            this.ClientList.WordWrap = false;
             // 
             // GameButton
             // 
@@ -126,7 +116,7 @@
             this.HelpButton.Location = new System.Drawing.Point(568, 3);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(92, 23);
-            this.HelpButton.TabIndex = 8;
+            this.HelpButton.TabIndex = 4;
             this.HelpButton.Text = "Help";
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
@@ -136,10 +126,40 @@
             this.MonoGameButton.Location = new System.Drawing.Point(468, 3);
             this.MonoGameButton.Name = "MonoGameButton";
             this.MonoGameButton.Size = new System.Drawing.Size(92, 23);
-            this.MonoGameButton.TabIndex = 9;
+            this.MonoGameButton.TabIndex = 3;
             this.MonoGameButton.Text = "2D Game";
             this.MonoGameButton.UseVisualStyleBackColor = true;
             this.MonoGameButton.Click += new System.EventHandler(this.MonoGameButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(666, 392);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(93, 23);
+            this.ClearButton.TabIndex = 10;
+            this.ClearButton.Text = "Clear Text";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // ListOfClients
+            // 
+            this.ListOfClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOfClients.FormattingEnabled = true;
+            this.ListOfClients.ItemHeight = 20;
+            this.ListOfClients.Location = new System.Drawing.Point(568, 31);
+            this.ListOfClients.Name = "ListOfClients";
+            this.ListOfClients.Size = new System.Drawing.Size(191, 324);
+            this.ListOfClients.TabIndex = 7;
+            // 
+            // DeselectNamesButton
+            // 
+            this.DeselectNamesButton.Location = new System.Drawing.Point(568, 363);
+            this.DeselectNamesButton.Name = "DeselectNamesButton";
+            this.DeselectNamesButton.Size = new System.Drawing.Size(191, 23);
+            this.DeselectNamesButton.TabIndex = 8;
+            this.DeselectNamesButton.Text = "Deselect Name";
+            this.DeselectNamesButton.UseVisualStyleBackColor = true;
+            this.DeselectNamesButton.Click += new System.EventHandler(this.DeselectNamesButton_Click);
             // 
             // ClientForm
             // 
@@ -147,10 +167,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 426);
+            this.Controls.Add(this.DeselectNamesButton);
+            this.Controls.Add(this.ListOfClients);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.MonoGameButton);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.GameButton);
-            this.Controls.Add(this.ClientList);
             this.Controls.Add(this.DisconnectButton);
             this.Controls.Add(this.NameButton);
             this.Controls.Add(this.NameInput);
@@ -174,9 +196,11 @@
         private System.Windows.Forms.TextBox NameInput;
         private System.Windows.Forms.Button NameButton;
         private System.Windows.Forms.Button DisconnectButton;
-        private System.Windows.Forms.TextBox ClientList;
         private System.Windows.Forms.Button GameButton;
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button MonoGameButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.ListBox ListOfClients;
+        private System.Windows.Forms.Button DeselectNamesButton;
     }
 }

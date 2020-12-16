@@ -100,16 +100,23 @@ namespace Client
                         {
                             case PacketType.ChatMessage:
                                 ChatMessagePacket chatPacket = tcpPacket as ChatMessagePacket;
-                                if (chatPacket._message.Contains("/clear"))
+                                if (chatPacket._message == "/clear")
                                     clientForm.ClearChatWindow();
                                 else if (chatPacket._message == "/monogame")
                                     Process.Start("C:/Users/Ben/Documents/GitHub/Network-Application/Server/OnlineGame/OnlineGame/bin/Debug/netcoreapp3.1/OnlineGame.exe");
+                                    //Process.Start("C:/Users/Ben/Documents/GitHub/Network-Application/Server/ClientOnlineGame.exe");
+                                    //Console.WriteLine("Monogame");
                                 else
                                     clientForm.UpdateChatWindow(chatPacket._message);
                                 break;
-                            case PacketType.ClientName:
-                                ClientNamePacket namePacket = tcpPacket as ClientNamePacket;
-                                clientForm.UpdateClientList(namePacket._nickName);
+                            //case PacketType.ClientName:
+                            //    ClientNamePacket namePacket = tcpPacket as ClientNamePacket;
+                            //    clientForm.UpdateClientList(namePacket._nickName);
+                            //    break;
+                            case PacketType.ClientList:
+                                ClientListPacket listPacket = tcpPacket as ClientListPacket;
+                                //foreach (string i in listPacket._nickName)
+                                clientForm.UpdateListOfClients(listPacket._nickName);
                                 break;
                             case PacketType.EncryptedMessage:
                                 EncryptMessagePacket encryptedPacket = tcpPacket as EncryptMessagePacket;

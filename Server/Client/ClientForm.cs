@@ -18,6 +18,10 @@ namespace Client
         public ClientForm(Client tempClient)
         {
             InitializeComponent();
+            SubmitButton.Enabled = false;
+            GameButton.Enabled = false;
+            MonoGameButton.Enabled = false;
+            ListOfClients.SelectedIndex = -1;
             client = tempClient;
         }
 
@@ -50,22 +54,22 @@ namespace Client
             }
         }
 
-        public void UpdateClientList(string name)
+        public void UpdateListOfClients(List<string> name)
         {
-            if (ClientList.InvokeRequired)
+            if (ListOfClients.InvokeRequired)
             {
                 Invoke(new Action(() =>
                 {
-                    UpdateClientList(name);
+                    UpdateListOfClients(name);
                 }));
             }
 
             else
             {
-                ClientList.Clear();
-                ClientList.Text += name + Environment.NewLine;
-                ClientList.SelectionStart = ClientList.Text.Length;
-                ClientList.ScrollToCaret();
+                ListOfClients.Items.Clear();
+                foreach (string i in name)
+                    ListOfClients.Items.Add(i);
+                ListOfClients.ClearSelected();
             }
         }
 
@@ -81,39 +85,61 @@ namespace Client
                 InputField.Text = InputField.Text.Substring(3, InputField.Text.Length - 3);
                 client.TCPSendMessage(new EncryptMessagePacket(client.EncryptString(InputField.Text)));
             }
+            else if (ListOfClients.SelectedIndex != -1)
+            {
+                int selectedClient = ListOfClients.SelectedIndex;
+                client.TCPSendMessage(new ChatMessagePacket(InputField.Text, selectedClient));
+            }
             else
-                client.TCPSendMessage(new ChatMessagePacket(InputField.Text));
+            {
+                client.TCPSendMessage(new ChatMessagePacket(InputField.Text, -1));
+            }
             InputField.Clear();
         }
 
         private void NameButton_Click(object sender, EventArgs e)
         {
-            if (NameInput.Text != null && NameInput.Text != " ")
+            NameInput.Text = NameInput.Text.Replace(" ", "");
+            if (NameInput.Text != null && NameInput.Text != string.Empty)
             {
                 client.SetName(new ClientNamePacket(NameInput.Text));
+                SubmitButton.Enabled = true;
+                GameButton.Enabled = true;
+                MonoGameButton.Enabled = true;
+                DeselectNamesButton.Enabled = true;
             }
         }
 
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
-            client.TCPSendMessage(new ChatMessagePacket("disconnected"));
+            client.TCPSendMessage(new ChatMessagePacket("disconnected", -1));
             client.SetName(new ClientNamePacket(null));
             Close();
         }
 
         private void GameButton_Click(object sender, EventArgs e)
         {
-            client.TCPSendMessage(new ChatMessagePacket("/game start"));
+            client.TCPSendMessage(new ChatMessagePacket("/game start", -1));
         }
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            client.TCPSendMessage(new ChatMessagePacket("/help"));
+            client.TCPSendMessage(new ChatMessagePacket("/help", -1));
         }
 
         private void MonoGameButton_Click(object sender, EventArgs e)
         {
-            client.TCPSendMessage(new ChatMessagePacket("/monogame"));
+            client.TCPSendMessage(new ChatMessagePacket("/monogame", -1));
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            client.TCPSendMessage(new ChatMessagePacket("/clear", -1));
+        }
+
+        private void DeselectNamesButton_Click(object sender, EventArgs e)
+        {
+            ListOfClients.SelectedIndex = -1;
         }
     }
 }
