@@ -136,7 +136,7 @@
             this.ListOfClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOfClients.FormattingEnabled = true;
             this.ListOfClients.ItemHeight = 20;
-            this.ListOfClients.Location = new System.Drawing.Point(568, 31);
+            this.ListOfClients.Location = new System.Drawing.Point(568, 30);
             this.ListOfClients.Name = "ListOfClients";
             this.ListOfClients.Size = new System.Drawing.Size(191, 324);
             this.ListOfClients.TabIndex = 7;
@@ -156,7 +156,7 @@
             this.PaintButton.Location = new System.Drawing.Point(468, 3);
             this.PaintButton.Name = "PaintButton";
             this.PaintButton.Size = new System.Drawing.Size(91, 23);
-            this.PaintButton.TabIndex = 11;
+            this.PaintButton.TabIndex = 3;
             this.PaintButton.Text = "Paint";
             this.PaintButton.UseVisualStyleBackColor = true;
             this.PaintButton.Click += new System.EventHandler(this.PaintButton_Click);
