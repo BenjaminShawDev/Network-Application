@@ -20,7 +20,8 @@ namespace Client
             InitializeComponent();
             SubmitButton.Enabled = false;
             GameButton.Enabled = false;
-            MonoGameButton.Enabled = false;
+            PaintButton.Enabled = false;
+            DeselectNamesButton.Enabled = false;
             ListOfClients.SelectedIndex = -1;
             client = tempClient;
         }
@@ -80,7 +81,7 @@ namespace Client
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (InputField.Text.Contains("/s"))
+            if (InputField.Text.StartsWith("/s"))
             {
                 InputField.Text = InputField.Text.Substring(3, InputField.Text.Length - 3);
                 client.TCPSendMessage(new EncryptMessagePacket(client.EncryptString(InputField.Text)));
@@ -105,8 +106,8 @@ namespace Client
                 client.SetName(new ClientNamePacket(NameInput.Text));
                 SubmitButton.Enabled = true;
                 GameButton.Enabled = true;
-                MonoGameButton.Enabled = true;
                 DeselectNamesButton.Enabled = true;
+                PaintButton.Enabled = true;
             }
         }
 
@@ -127,11 +128,6 @@ namespace Client
             client.TCPSendMessage(new ChatMessagePacket("/help", -1));
         }
 
-        private void MonoGameButton_Click(object sender, EventArgs e)
-        {
-            client.TCPSendMessage(new ChatMessagePacket("/monogame", -1));
-        }
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
             client.TCPSendMessage(new ChatMessagePacket("/clear", -1));
@@ -140,6 +136,11 @@ namespace Client
         private void DeselectNamesButton_Click(object sender, EventArgs e)
         {
             ListOfClients.SelectedIndex = -1;
+        }
+
+        private void PaintButton_Click(object sender, EventArgs e)
+        {
+            client.TCPSendMessage(new ChatMessagePacket("/paint", -1));
         }
     }
 }

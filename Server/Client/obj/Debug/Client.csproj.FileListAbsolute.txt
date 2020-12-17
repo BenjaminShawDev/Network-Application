@@ -62,3 +62,4 @@ C:\Users\Ben\Documents\GitHub\Network-Application\Server\Client\obj\Debug\Client
 C:\Users\Ben\Documents\GitHub\Network-Application\Server\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\Ben\Documents\GitHub\Network-Application\Server\Client\obj\Debug\Client.exe
 C:\Users\Ben\Documents\GitHub\Network-Application\Server\Client\obj\Debug\Client.pdb
+C:\Users\Ben\Documents\GitHub\Network-Application\Server\Client\obj\Debug\Client.GrapicForm.resources

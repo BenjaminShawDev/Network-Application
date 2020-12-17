@@ -24,7 +24,7 @@ namespace Server
         RSACryptoServiceProvider m_RSAProvider;
         RSAParameters m_PublicKey;
         RSAParameters m_PrivateKey;
-        RSAParameters m_ServerKey;
+        RSAParameters m_ClientKey;
 
         //Hangman variables
         static bool gameStarted = false;
@@ -102,11 +102,12 @@ namespace Server
                             //Help command
                             if (chatPacket._message == "/help")
                             {
-                                ChatMessagePacket outPacket = new ChatMessagePacket("You need to set a name before you can do anything, to do that simply type a name into the textbox above and then click the Enter Name button." + Environment.NewLine + 
+                                ChatMessagePacket outPacket = new ChatMessagePacket("You need to set a name before you can send messages, to do that simply type a name into the textbox above and then click the Enter Name button." + Environment.NewLine + 
                                     "To send a message you need to type a message in the textbox at the bottom and then either click the send message button or press the enter key on your keyboard." + Environment.NewLine + 
-                                    "/w [recipient] [message] - Whisper to another client" + Environment.NewLine + "You can also whisper by selecting a name from the list on the right, press the clear names buton below it to deselect a name" + 
-                                    Environment.NewLine + "/game [command] or /g [command] - commands for the hangman game " + Environment.NewLine +
-                                    "Game commands: start - starts a game of hangman, end - ends the game, guess - guess a letter from the word" + Environment.NewLine + "/clear - clears the text" + Environment.NewLine + "/help - brings up this text" + Environment.NewLine, -1);
+                                    "/w [recipient] [message] - Whisper to another client" + Environment.NewLine + "You can also whisper by selecting a name from the list on the right, press the deselect names button below it if you don't want to have a name selected" + 
+                                    Environment.NewLine + "/game [command] or /g [command] - commands for the hangman game " + Environment.NewLine + "Hangman commands: start - starts a game of hangman, end - ends the game, guess - guess a letter from the word" + 
+                                    Environment.NewLine + "/paint - opens the painting window" + Environment.NewLine + "/s [message] - sends a secure message that is encrypted then decrypted" + Environment.NewLine + "/clear - clears the text" + Environment.NewLine + 
+                                    "/help - brings up this text" + Environment.NewLine, -1);
                                 m_Clients[index].Send(outPacket);
                                 break;
                             }
@@ -228,8 +229,8 @@ namespace Server
                                     SendPacketToAll("YOU WIN" + Environment.NewLine + "You guessed " + m_Word + " correctly" + Environment.NewLine + "Type /game start or press the hangman button if you want to play again.");
                                 }
                             }
-                            //Monogame start
-                            else if (chatPacket._message == "/monogame")
+                            //Paint start
+                            else if (chatPacket._message == "/paint")
                             {
                                 ChatMessagePacket outPacket = new ChatMessagePacket(chatPacket._message, -1);
                                 m_Clients[index].Send(outPacket);
@@ -288,6 +289,16 @@ namespace Server
                             LoginPacket loginPacket = (LoginPacket)packet;
                             endPoint = loginPacket._endPoint;
                             break;
+                        case PacketType.PenPacket:
+                            PenPacket penPacket = packet as PenPacket;
+                            int clientNum = 0;
+                            foreach (Client i in m_Clients.Values)
+                            {
+                                if (clientNum != index)
+                                    i.Send(penPacket);
+                                clientNum++;
+                            }
+                            break;
                         default:
                             break;
                     }
@@ -307,7 +318,7 @@ namespace Server
         {
             lock (m_RSAProvider)
             {
-                m_RSAProvider.ImportParameters(m_ServerKey);
+                m_RSAProvider.ImportParameters(m_ClientKey);
                 return m_RSAProvider.Encrypt(data, true);
             }
         }
@@ -359,7 +370,6 @@ namespace Server
             m_CorrectLetters = new List<char>();
             Random rand = new Random();
             m_Word = m_Words[rand.Next(0, m_Words.Length)];
-            Console.WriteLine(m_Word);
         }
 
         static string ShowHangman()

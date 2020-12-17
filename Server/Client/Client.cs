@@ -19,17 +19,19 @@ namespace Client
         TcpClient tcpClient;
         UdpClient udpClient;
         NetworkStream stream;
-        //StreamWriter writer;
-        //StreamReader reader;
         BinaryReader reader;
         BinaryWriter writer;
         BinaryFormatter formatter;
         ClientForm clientForm;
+        GrapicForm graphicForm;
+
+        List<int> lastDrawingX = new List<int>();
+        List<int> lastDrawingY = new List<int>();
 
         RSACryptoServiceProvider m_RSAProvider;
         RSAParameters m_PublicKey;
         RSAParameters m_PrivateKey;
-        RSAParameters m_ClientKey;
+        RSAParameters m_ServerKey;
 
         public Client()
         {
@@ -69,13 +71,20 @@ namespace Client
         public void Run()
         {
             clientForm = new ClientForm(this);
+            graphicForm = new GrapicForm(this);
             Thread TCPThread = new Thread(TCPProcessServerResponse);
             TCPThread.Start();
             Thread UDPThread = new Thread(UDPProcessServerResponse);
-            UDPThread.Start();
+            UDPThread.Start(); 
             clientForm.ShowDialog();
             tcpClient.Close();
             udpClient.Close();
+        }
+
+        private void StartGraphic()
+        {
+            graphicForm = new GrapicForm(this);
+            graphicForm.ShowDialog();
         }
 
         public IPEndPoint Login()
@@ -102,26 +111,35 @@ namespace Client
                                 ChatMessagePacket chatPacket = tcpPacket as ChatMessagePacket;
                                 if (chatPacket._message == "/clear")
                                     clientForm.ClearChatWindow();
-                                else if (chatPacket._message == "/monogame")
-                                    Process.Start("C:/Users/Ben/Documents/GitHub/Network-Application/Server/OnlineGame/OnlineGame/bin/Debug/netcoreapp3.1/OnlineGame.exe");
-                                    //Process.Start("C:/Users/Ben/Documents/GitHub/Network-Application/Server/ClientOnlineGame.exe");
-                                    //Console.WriteLine("Monogame");
+                                else if (chatPacket._message == "/paint")
+                                {
+                                    Thread GraphicThread = new Thread(StartGraphic);
+                                    GraphicThread.Start();
+                                }
                                 else
                                     clientForm.UpdateChatWindow(chatPacket._message);
                                 break;
-                            //case PacketType.ClientName:
-                            //    ClientNamePacket namePacket = tcpPacket as ClientNamePacket;
-                            //    clientForm.UpdateClientList(namePacket._nickName);
-                            //    break;
                             case PacketType.ClientList:
                                 ClientListPacket listPacket = tcpPacket as ClientListPacket;
-                                //foreach (string i in listPacket._nickName)
                                 clientForm.UpdateListOfClients(listPacket._nickName);
+                                break;
+                            case PacketType.Login:
                                 break;
                             case PacketType.EncryptedMessage:
                                 EncryptMessagePacket encryptedPacket = tcpPacket as EncryptMessagePacket;
                                 string decryptedMessage = DecryptString(encryptedPacket._encryptedMessage);
                                 clientForm.UpdateChatWindow(decryptedMessage);
+                                break;
+                            case PacketType.PenPacket:
+                                try
+                                {
+                                    PenPacket penPacket = tcpPacket as PenPacket;
+                                    graphicForm.UpdateBackgroundPanel(penPacket._penDrawX, penPacket._penDrawY, penPacket._penColour);
+                                }
+                                catch
+                                {
+
+                                }
                                 break;
                         }
                     }
@@ -143,6 +161,11 @@ namespace Client
                     byte[] bytes = udpClient.Receive(ref endPoint);
                     MemoryStream memStream = new MemoryStream(bytes);
                     Packet udpPacket = formatter.Deserialize(memStream) as Packet;
+
+                    switch (udpPacket.packetType)
+                    {
+ 
+                    }
                 }
             }
 
@@ -154,12 +177,19 @@ namespace Client
 
         public void TCPSendMessage(Packet message)
         {
-            MemoryStream memStream = new MemoryStream();
-            formatter.Serialize(memStream, message);
-            byte[] buffer = memStream.GetBuffer();
-            writer.Write(buffer.Length);
-            writer.Write(buffer);
-            writer.Flush();
+            try
+            {
+                MemoryStream memStream = new MemoryStream();
+                formatter.Serialize(memStream, message);
+                byte[] buffer = memStream.GetBuffer();
+                writer.Write(buffer.Length);
+                writer.Write(buffer);
+                writer.Flush();
+            }
+            catch
+            {
+
+            }
         }
 
         public void UDPSendMessage(Packet packet)
@@ -199,7 +229,7 @@ namespace Client
             {
                 try
                 {
-                    m_RSAProvider.ImportParameters(m_ClientKey);
+                    m_RSAProvider.ImportParameters(m_ServerKey);
                     return m_RSAProvider.Encrypt(data, true);
                 }
                 catch

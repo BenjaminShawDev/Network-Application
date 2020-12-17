@@ -36,10 +36,10 @@
             this.DisconnectButton = new System.Windows.Forms.Button();
             this.GameButton = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
-            this.MonoGameButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.ListOfClients = new System.Windows.Forms.ListBox();
             this.DeselectNamesButton = new System.Windows.Forms.Button();
+            this.PaintButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SubmitButton
@@ -121,16 +121,6 @@
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
-            // MonoGameButton
-            // 
-            this.MonoGameButton.Location = new System.Drawing.Point(468, 3);
-            this.MonoGameButton.Name = "MonoGameButton";
-            this.MonoGameButton.Size = new System.Drawing.Size(92, 23);
-            this.MonoGameButton.TabIndex = 3;
-            this.MonoGameButton.Text = "2D Game";
-            this.MonoGameButton.UseVisualStyleBackColor = true;
-            this.MonoGameButton.Click += new System.EventHandler(this.MonoGameButton_Click);
-            // 
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(666, 392);
@@ -161,16 +151,26 @@
             this.DeselectNamesButton.UseVisualStyleBackColor = true;
             this.DeselectNamesButton.Click += new System.EventHandler(this.DeselectNamesButton_Click);
             // 
+            // PaintButton
+            // 
+            this.PaintButton.Location = new System.Drawing.Point(468, 3);
+            this.PaintButton.Name = "PaintButton";
+            this.PaintButton.Size = new System.Drawing.Size(91, 23);
+            this.PaintButton.TabIndex = 11;
+            this.PaintButton.Text = "Paint";
+            this.PaintButton.UseVisualStyleBackColor = true;
+            this.PaintButton.Click += new System.EventHandler(this.PaintButton_Click);
+            // 
             // ClientForm
             // 
             this.AcceptButton = this.SubmitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 426);
+            this.Controls.Add(this.PaintButton);
             this.Controls.Add(this.DeselectNamesButton);
             this.Controls.Add(this.ListOfClients);
             this.Controls.Add(this.ClearButton);
-            this.Controls.Add(this.MonoGameButton);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.GameButton);
             this.Controls.Add(this.DisconnectButton);
@@ -198,9 +198,9 @@
         private System.Windows.Forms.Button DisconnectButton;
         private System.Windows.Forms.Button GameButton;
         private System.Windows.Forms.Button HelpButton;
-        private System.Windows.Forms.Button MonoGameButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.ListBox ListOfClients;
         private System.Windows.Forms.Button DeselectNamesButton;
+        private System.Windows.Forms.Button PaintButton;
     }
 }

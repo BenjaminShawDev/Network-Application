@@ -12,7 +12,8 @@ namespace Packets
         ClientList,
         Login,
         EncryptedMessage,
-        Disconnect
+        Disconnect,
+        PenPacket
     }
 
     [Serializable]
@@ -53,7 +54,6 @@ namespace Packets
     [Serializable]
     public class ClientListPacket : Packet
     {
-        //public string _nickName;
         public List<string> _nickName = new List<string>();
 
         public ClientListPacket(List<string> nickname)
@@ -84,6 +84,22 @@ namespace Packets
         {
             _encryptedMessage = message;
             packetType = PacketType.EncryptedMessage;
+        }
+    }
+
+    [Serializable]
+    public class PenPacket : Packet
+    {
+        public int _penDrawX;
+        public int _penDrawY;
+        public int[] _penColour;
+
+        public PenPacket(int penDrawX, int penDrawY, int[] penColour)
+        {
+            _penDrawX = penDrawX;
+            _penDrawY = penDrawY;
+            _penColour = penColour;
+            packetType = PacketType.PenPacket;
         }
     }
 }
